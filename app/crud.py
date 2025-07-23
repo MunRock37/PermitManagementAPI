@@ -1,5 +1,7 @@
 from datetime import datetime, timedelta
+
 from sqlalchemy.orm import Session
+
 from app import models, schemas
 
 
@@ -49,10 +51,14 @@ def get_pending_expired_permits(db: Session):
         List[Permit]: List of expired pending permits.
     """
     threshold = datetime.utcnow() - timedelta(minutes=2)
-    return db.query(models.Permit).filter(
-        models.Permit.status == models.PermitStatus.pending,
-        models.Permit.created_at < threshold
-    ).all()
+    return (
+        db.query(models.Permit)
+        .filter(
+            models.Permit.status == models.PermitStatus.pending,
+            models.Permit.created_at < threshold,
+        )
+        .all()
+    )
 
 
 def update_permit_status(db: Session, permit_id: int, new_status: models.PermitStatus):

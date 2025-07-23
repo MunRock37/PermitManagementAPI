@@ -15,7 +15,7 @@ def get_current_user(token: HTTPAuthorizationCredentials = Depends(security)):
     Returns:
         A dict representing the authenticated user (e.g., {"username": "admin"}).
     """
-    if token.credentials != "mocked-token":  
+    if token.credentials != "mocked-token":
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid or missing token",
