@@ -27,7 +27,7 @@ def expire_pending_permits():
 celery_app.conf.beat_schedule = {
     "expire-pending-permits-every-minute": {
         "task": "app.tasks.expire_pending_permits",
-        "schedule": 60.0,  # every 60 seconds
+        "schedule": 300.0,  # time in seconds
     }
 }
 celery_app.conf.timezone = "UTC"
