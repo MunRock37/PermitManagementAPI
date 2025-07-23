@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+celery
+redis
+python-dotenv
+pytest
+httpx
+pytest-asyncio
+pydantic-settings>=2.0
